@@ -5,6 +5,9 @@ import AddSchedule from "../page/AddSchedule";
 import AllSchedule from "../page/AllSchedule";
 import Loging from "../page/Loging";
 import Register from "../page/Register";
+import OurGoal from "../page/OurGoal";
+import OurMission from "../page/OurMission";
+import OurVision from "../page/OurVision";
 
 const router=createBrowserRouter([
     {
@@ -30,6 +33,18 @@ const router=createBrowserRouter([
             {
                 path:"/register",
                 element:<Register></Register>
+            },
+            {
+                path:'/goal',
+                element:<OurGoal></OurGoal>
+            },
+            {
+                path:"/mission",
+                element:<OurMission></OurMission>
+            },
+            {
+                path:'/vision',
+                element:<OurVision></OurVision>
             }
 
         ]
