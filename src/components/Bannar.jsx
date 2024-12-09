@@ -18,15 +18,12 @@ const Bannar = () => {
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
           The Best Fitness Studio in Town
         </h2>
-        <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-medium shadow-lg hover:shadow-2xl transition duration-300">
+        <button className="bg-red-500 hover:bg-black text-white px-6 py-3 rounded-lg text-lg font-medium shadow-lg hover:shadow-2xl transition duration-300">
           Make Appointment
         </button>
       </div>
 
-      {/* Additional Content (Optional) */}
-      <div className="absolute bottom-4 w-full text-center text-gray-300">
-        <p className="text-sm md:text-base">Join us and transform your life today!</p>
-      </div>
+      
     </div>
   );
 };

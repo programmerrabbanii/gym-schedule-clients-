@@ -50,12 +50,12 @@ const Navbar = () => {
         {/* Login & Register */}
         <div className="space-x-4">
           <NavLink to="/login">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            <button className="bg-red-500 hover:bg-black text-white px-4 py-2 rounded">
               Login
             </button>
           </NavLink>
           <NavLink to="/register">
-            <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+            <button className="bg-red-500 hover:bg-black text-white px-4 py-2 rounded">
               Register
             </button>
           </NavLink>
