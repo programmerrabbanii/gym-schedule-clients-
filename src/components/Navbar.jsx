@@ -4,14 +4,14 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className="bg-gray-800 text-white sticky top-0 z-10">
       <div className="container mx-auto flex justify-between items-center p-4 w-11/12 ">
       
         <div className="text-xl font-bold">
           <NavLink to="/"> <img className='h-20 rounded-full' src={navlog} alt="" /></NavLink>
         </div>
 
-        {/* Path Names */}
+        {/* Path Names */} 
         <ul className="hidden md:flex space-x-6">
           <li>
             <NavLink
