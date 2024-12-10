@@ -1,4 +1,6 @@
 import React from "react";
+import Swal from "sweetalert2";
+
 
 const AddSchedule = () => {
     const handleAddSchedule=e=>{
@@ -8,8 +10,25 @@ const AddSchedule = () => {
         const time=e.target.time.value;
         const date=e.target.date.value;
         const scheduleInfo={title,day,time,date}
-        console.log(scheduleInfo);
-        
+         fetch('http://localhost:5000/schedule',{
+            method:'POST',
+            headers:{
+                'content-type' : 'application/json'
+            },
+            body:JSON.stringify(scheduleInfo)
+         })
+         .then(res=>res.json())
+         .then(data=>{
+            if(data.insertedId){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work schedule time added",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+         })
     } 
 
   return (

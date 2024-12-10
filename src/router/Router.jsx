@@ -24,7 +24,8 @@ const router=createBrowserRouter([
             },
             {
                 path:"/allschedule",
-                element:<AllSchedule></AllSchedule>
+                element:<AllSchedule></AllSchedule>,
+                loader: ()=>fetch('http://localhost:5000/schedule')
             },
             {
                 path:"/login",
