@@ -8,6 +8,7 @@ import Register from "../page/Register";
 import OurGoal from "../page/OurGoal";
 import OurMission from "../page/OurMission";
 import OurVision from "../page/OurVision";
+import Update from "../page/Update";
 
 const router=createBrowserRouter([
     {
@@ -31,7 +32,7 @@ const router=createBrowserRouter([
                 path:"/login",
                 element:<Loging></Loging>
             },
-            {
+            { 
                 path:"/register",
                 element:<Register></Register>
             },
@@ -46,6 +47,12 @@ const router=createBrowserRouter([
             {
                 path:'/vision',
                 element:<OurVision></OurVision>
+            },
+            {
+                path:'/update/:id',
+                element:<Update></Update>,
+                loader:({params})=>fetch(`http://localhost:5000/schedule/${params.id}`)
+                
             }
 
         ]

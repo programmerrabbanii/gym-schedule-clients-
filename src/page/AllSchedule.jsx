@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AllSchedule = () => {
@@ -80,7 +80,7 @@ const AllSchedule = () => {
                 <td className="px-4 py-2">{schedule.time}</td>
                 <td className="px-4 py-2 flex space-x-2">
                   <button onClick={()=>handleDelete(schedule._id)} className="bg-pink-500 text-white px-3 py-2 rounded-lg">🗑️</button>
-                  <button className="bg-pink-500 text-white px-3 py-2 rounded-lg">✏️</button>
+                  <Link to={`/update/${schedule._id}`} className="bg-pink-500 text-white px-3 py-2 rounded-lg">✏️</Link>
                   <button className="bg-pink-500 text-white px-3 py-2 rounded-lg">✔️</button>
                 </td>
               </tr>
