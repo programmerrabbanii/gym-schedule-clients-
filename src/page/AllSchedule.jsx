@@ -1,9 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AllSchedule = () => {
   const scheduleData = useLoaderData();
-  console.log(scheduleData);
+  const [gymData,setGymData]=useState(scheduleData)
+  const handleDelete=(id)=>{
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+        fetch(`http://localhost:5000/schedule/${id}`,{
+            method:'DELETE'
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                if(data.deletedCount >0){
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+                }
+                const remaing=gymData.filter(data=> data._id !==id)
+                setGymData(remaing)
+            })
+        
+        }
+      });
+
+   
+    console.log(id);
+  }
 
   return (
     <div className="p-4">
@@ -29,14 +64,14 @@ const AllSchedule = () => {
           </tr>
         </thead>
         <tbody>
-          {scheduleData.length === 0 ? (
+          {gymData.length === 0 ? (
             <tr>
               <td colSpan="6" className="px-4 py-2 text-center">
                 No Data Found
               </td>
             </tr>
           ) : (
-            scheduleData.map((schedule, index) => (
+            gymData.map((schedule, index) => (
               <tr key={index} className="border-t">
                 <td className="px-4 py-2">{index + 1}</td>
                 <td className="px-4 py-2">{schedule.title}</td>
@@ -44,7 +79,7 @@ const AllSchedule = () => {
                 <td className="px-4 py-2">{schedule.date}</td>
                 <td className="px-4 py-2">{schedule.time}</td>
                 <td className="px-4 py-2 flex space-x-2">
-                  <button className="bg-pink-500 text-white px-3 py-2 rounded-lg">🗑️</button>
+                  <button onClick={()=>handleDelete(schedule._id)} className="bg-pink-500 text-white px-3 py-2 rounded-lg">🗑️</button>
                   <button className="bg-pink-500 text-white px-3 py-2 rounded-lg">✏️</button>
                   <button className="bg-pink-500 text-white px-3 py-2 rounded-lg">✔️</button>
                 </td>
